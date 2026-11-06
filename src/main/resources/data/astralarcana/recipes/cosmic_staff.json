@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" N ", " B ", " B "],
+  "key": {
+    "N": { "item": "minecraft:nether_star" },
+    "B": { "item": "minecraft:blaze_rod" }
+  },
+  "result": { "item": "astralarcana:cosmic_staff" }
+}

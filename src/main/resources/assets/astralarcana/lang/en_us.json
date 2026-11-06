@@ -1,0 +1,15 @@
+{
+  "item.astralarcana.cosmic_staff": "Cosmic Staff",
+  "itemGroup.astralarcana": "Astral Arcana",
+  "spell.astralarcana.0": "Meteor Storm",
+  "spell.astralarcana.1": "Singularity",
+  "spell.astralarcana.2": "Astral Beam",
+  "spell.astralarcana.3": "Supernova",
+  "tooltip.astralarcana.spell": "Selected spell: %s",
+  "tooltip.astralarcana.hold": "Hold Right Click to charge, release to cast",
+  "tooltip.astralarcana.switch": "Shift + Right Click to switch spell",
+  "entity.astralarcana.meteor": "Meteor",
+  "entity.astralarcana.black_hole": "Singularity",
+  "entity.astralarcana.cosmic_serpent": "Cosmic Serpent",
+  "item.astralarcana.cosmic_serpent_spawn_egg": "Cosmic Serpent Spawn Egg"
+}
