@@ -1,0 +1,42 @@
+{
+    "vertex": "astralarcana:distort",
+    "fragment": "astralarcana:cinematic",
+    "attributes": [ "Position", "UV0" ],
+    "samplers": [
+        { "name": "Sampler0" },
+        { "name": "Sampler1" }
+    ],
+    "uniforms": [
+        { "name": "ModelViewMat", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+        { "name": "ProjMat", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+        { "name": "InvPV", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+        { "name": "PrevPV", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+        { "name": "LightPosA", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "LightColA", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "LightPosB", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "LightColB", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "OrbPos", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "OrbCol", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "OrbPar", "type": "matrix4x4", "count": 16, "values": [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0 ] },
+        { "name": "ShockP0", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "ShockC0", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "ShockP1", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "ShockC1", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "ShockW", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] },
+        { "name": "Atmos", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "AtmosB", "type": "float", "count": 4, "values": [ 0.05, 0.0, 0.8, 0.0 ] },
+        { "name": "CamDelta", "type": "float", "count": 3, "values": [ 0.0, 0.0, 0.0 ] },
+        { "name": "Info", "type": "float", "count": 4, "values": [ 0.0, 0.0, 16.0, 0.0 ] },
+        { "name": "ScreenSize", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] },
+        { "name": "Lens", "type": "float", "count": 4, "values": [ 0.5, 0.5, 0.0, 0.2 ] },
+        { "name": "Horizon", "type": "float", "count": 1, "values": [ 0.0 ] },
+        { "name": "Wave", "type": "float", "count": 4, "values": [ 0.5, 0.5, 0.0, 0.05 ] },
+        { "name": "WaveStr", "type": "float", "count": 1, "values": [ 0.0 ] },
+        { "name": "Blur", "type": "float", "count": 3, "values": [ 0.5, 0.5, 0.0 ] },
+        { "name": "Chroma", "type": "float", "count": 1, "values": [ 0.0 ] },
+        { "name": "Swirl", "type": "float", "count": 4, "values": [ 0.5, 0.5, 0.0, 0.3 ] },
+        { "name": "Grade", "type": "float", "count": 4, "values": [ 0.0, 0.0, 0.0, 0.0 ] },
+        { "name": "Tint", "type": "float", "count": 4, "values": [ 1.0, 1.0, 1.0, 0.0 ] },
+        { "name": "Clock", "type": "float", "count": 1, "values": [ 0.0 ] }
+    ]
+}

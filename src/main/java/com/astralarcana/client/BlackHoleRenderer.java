@@ -24,7 +24,7 @@ public class BlackHoleRenderer extends EntityRenderer<BlackHoleEntity> {
 
     @Override
     public boolean shouldRender(BlackHoleEntity e, Frustum frustum, double x, double y, double z) {
-        return true;
+        return frustum.isVisible(e.getBoundingBox().inflate(14.0));
     }
 
     @Override
@@ -40,12 +40,14 @@ public class BlackHoleRenderer extends EntityRenderer<BlackHoleEntity> {
         ps.translate(0, e.getBbHeight() / 2.0, 0);
 
         VertexConsumer core = buf.getBuffer(RenderType.entityCutoutNoCull(ClientFx.SOLID));
-        FxRender.sphere(ps, core, R, 14, 20, 0f, 0f, 0f, 1f);
+        double dist = Math.sqrt(this.entityRenderDispatcher.distanceToSqr(e));
+        int st = com.astralarcana.engine.perf.PerformanceEngine.lod(14, dist, R);
+        FxRender.sphere(ps, core, R, st, st + 6, 0f, 0f, 0f, 1f);
 
         VertexConsumer glow = buf.getBuffer(RenderType.eyes(ClientFx.SOLID));
-        FxRender.sphere(ps, glow, R * 1.1f, 12, 18, 0.9f, 0.5f, 1f, 0.35f);
-        FxRender.sphere(ps, glow, R * 1.5f, 10, 16, 0.4f, 0.2f, 1f, 0.14f);
-        FxRender.sphere(ps, glow, R * 2.3f, 8, 14, 0.3f, 0.1f, 0.8f, 0.07f);
+        FxRender.sphere(ps, glow, R * 1.1f, Math.max(4, st - 2), st + 4, 0.9f, 0.5f, 1f, 0.35f);
+        FxRender.sphere(ps, glow, R * 1.5f, Math.max(4, st - 4), st, 0.4f, 0.2f, 1f, 0.14f);
+        FxRender.sphere(ps, glow, R * 2.3f, Math.max(4, st - 6), st - 2, 0.3f, 0.1f, 0.8f, 0.07f);
 
         ps.pushPose();
         ps.mulPose(Axis.XP.rotationDegrees(20f));

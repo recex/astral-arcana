@@ -27,7 +27,7 @@ public class CosmicSerpentRenderer extends EntityRenderer<CosmicSerpentEntity> {
 
     @Override
     public boolean shouldRender(CosmicSerpentEntity e, Frustum frustum, double x, double y, double z) {
-        return true;
+        return frustum.isVisible(e.bodyBounds().inflate(6.0));
     }
 
     private static float hash(int n) {

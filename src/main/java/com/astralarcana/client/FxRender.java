@@ -124,4 +124,11 @@ public final class FxRender {
                     r * sh, g * sh, bl * sh, alpha, alpha, alpha, alpha);
         }
     }
+
+    /** Quad arbitrario com cor unica e alfa por vertice (fitas, discos de portal). */
+    public static void quad4(PoseStack ps, VertexConsumer vc, Vec3 a, Vec3 b, Vec3 c, Vec3 d,
+                             float r, float g, float bl, float a0, float a1, float a2, float a3) {
+        quad(vc, ps.last(), (float) a.x, (float) a.y, (float) a.z, (float) b.x, (float) b.y, (float) b.z,
+                (float) c.x, (float) c.y, (float) c.z, (float) d.x, (float) d.y, (float) d.z, r, g, bl, a0, a1, a2, a3);
+    }
 }

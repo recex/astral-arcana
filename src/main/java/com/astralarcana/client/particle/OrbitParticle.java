@@ -5,7 +5,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 /** Particula que orbita um centro (disco de acrecao, circulo magico, espirais). */
 public class OrbitParticle extends GlowParticle {
     private final double cx, cy, cz, angSpeed, inward, tilt;
-    private double angle, radius;
+    private double angle, radius, rise;
 
     public OrbitParticle(ClientLevel level, double cx, double cy, double cz, double angle, double radius,
                          double angSpeed, double inward, double tilt, float[] col, float size, int life) {
@@ -24,10 +24,15 @@ public class OrbitParticle extends GlowParticle {
         this.zo = this.z;
     }
 
+    public OrbitParticle rise(double r) {
+        this.rise = r;
+        return this;
+    }
+
     private void place() {
         double x0 = Math.cos(angle) * radius;
         double z0 = Math.sin(angle) * radius;
-        setPos(cx + x0, cy - Math.sin(tilt) * z0, cz + Math.cos(tilt) * z0);
+        setPos(cx + x0, cy - Math.sin(tilt) * z0 + rise * age, cz + Math.cos(tilt) * z0);
     }
 
     @Override

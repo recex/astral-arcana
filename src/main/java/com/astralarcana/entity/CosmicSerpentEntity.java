@@ -53,6 +53,7 @@ public class CosmicSerpentEntity extends Mob {
 
     /** tickCount em que a fase atual comecou (valido no cliente e no servidor). */
     public int phaseStart;
+    public int frozenTicks;
     private int phaseTicks;
     private int phaseDuration = 100;
     private float orbitAngle;
@@ -97,6 +98,17 @@ public class CosmicSerpentEntity extends Mob {
     public int getPhase() { return this.entityData.get(PHASE); }
 
     public Vec3 center() { return position().add(0, getBbHeight() / 2.0, 0); }
+
+    /** Caixa que envolve todos os segmentos (usada no frustum culling do renderer). */
+    public AABB bodyBounds() {
+        double minX = 1e18, minY = 1e18, minZ = 1e18, maxX = -1e18, maxY = -1e18, maxZ = -1e18;
+        for (Vec3 s : segs) {
+            minX = Math.min(minX, s.x); maxX = Math.max(maxX, s.x);
+            minY = Math.min(minY, s.y); maxY = Math.max(maxY, s.y);
+            minZ = Math.min(minZ, s.z); maxZ = Math.max(maxZ, s.z);
+        }
+        return new AABB(minX, minY, minZ, maxX, maxY, maxZ);
+    }
 
     public Vec3 getForward() {
         Vec3 f = segs[0].subtract(segs[1]);
@@ -163,6 +175,11 @@ public class CosmicSerpentEntity extends Mob {
     protected void customServerAiStep() {
         super.customServerAiStep();
         bossEvent.setProgress(getHealth() / getMaxHealth());
+        if (frozenTicks > 0) {
+            frozenTicks--;
+            setDeltaMovement(Vec3.ZERO);
+            return;
+        }
         ServerPlayer target = findTarget();
         Vec3 pos = center();
         if (target == null) {

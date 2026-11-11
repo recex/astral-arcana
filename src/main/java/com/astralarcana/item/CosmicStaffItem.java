@@ -38,10 +38,12 @@ public class CosmicStaffItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (player.isShiftKeyDown()) {
-            int next = (getSpell(stack) + 1) % Spells.COUNT;
+            float pitch = player.getXRot();
+            int step = pitch < -75f ? -1 : (pitch > 75f ? 5 : 1);
+            int next = Math.floorMod(getSpell(stack) + step, Spells.COUNT);
             stack.getOrCreateTag().putInt("Spell", next);
             if (!level.isClientSide) {
-                player.displayClientMessage(Component.translatable("spell.astralarcana." + next).withStyle(Spells.COLOR[next]), true);
+                player.displayClientMessage(Component.translatable("spell.astralarcana." + next).append(" (" + (next + 1) + "/" + Spells.COUNT + ")").withStyle(Spells.COLOR[next]), true);
                 level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0f, 0.7f + next * 0.25f);
             }
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

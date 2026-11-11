@@ -3,6 +3,7 @@ package com.astralarcana;
 import com.astralarcana.entity.BlackHoleEntity;
 import com.astralarcana.entity.CosmicSerpentEntity;
 import com.astralarcana.entity.MeteorEntity;
+import com.astralarcana.entity.SpellZoneEntity;
 import com.astralarcana.item.CosmicStaffItem;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -37,6 +38,10 @@ public final class Reg {
     public static final RegistryObject<EntityType<BlackHoleEntity>> BLACK_HOLE = ENTITIES.register("black_hole",
             () -> EntityType.Builder.<BlackHoleEntity>of(BlackHoleEntity::new, MobCategory.MISC)
                     .sized(1.0f, 1.0f).clientTrackingRange(16).updateInterval(2).fireImmune().build("black_hole"));
+
+    public static final RegistryObject<EntityType<SpellZoneEntity>> ZONE = ENTITIES.register("spell_zone",
+            () -> EntityType.Builder.<SpellZoneEntity>of(SpellZoneEntity::new, MobCategory.MISC)
+                    .sized(1.0f, 1.0f).clientTrackingRange(16).updateInterval(1).fireImmune().build("spell_zone"));
 
     public static final RegistryObject<EntityType<CosmicSerpentEntity>> SERPENT = ENTITIES.register("cosmic_serpent",
             () -> EntityType.Builder.<CosmicSerpentEntity>of(CosmicSerpentEntity::new, MobCategory.MONSTER)

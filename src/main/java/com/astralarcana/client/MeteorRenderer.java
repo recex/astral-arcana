@@ -27,7 +27,7 @@ public class MeteorRenderer extends EntityRenderer<MeteorEntity> {
 
     @Override
     public boolean shouldRender(MeteorEntity e, Frustum frustum, double x, double y, double z) {
-        return true;
+        return frustum.isVisible(e.getBoundingBox().inflate(e.getSize() * 3.0));
     }
 
     @Override
@@ -38,8 +38,10 @@ public class MeteorRenderer extends EntityRenderer<MeteorEntity> {
         ps.translate(0, e.getBbHeight() / 2.0, 0);
 
         VertexConsumer glow = buf.getBuffer(RenderType.eyes(ClientFx.SOLID));
-        FxRender.sphere(ps, glow, s * 1.6f, 10, 14, 1f, 0.45f, 0.1f, 0.25f);
-        FxRender.sphere(ps, glow, s * 2.4f, 8, 12, 1f, 0.3f, 0.05f, 0.12f);
+        double dist = Math.sqrt(this.entityRenderDispatcher.distanceToSqr(e));
+        int st = com.astralarcana.engine.perf.PerformanceEngine.lod(10, dist, s * 1.6);
+        FxRender.sphere(ps, glow, s * 1.6f, st, st + 4, 1f, 0.45f, 0.1f, 0.25f);
+        FxRender.sphere(ps, glow, s * 2.4f, Math.max(4, st - 2), st + 2, 1f, 0.3f, 0.05f, 0.12f);
 
         var blocks = Minecraft.getInstance().getBlockRenderer();
         ps.pushPose();

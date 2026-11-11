@@ -10,7 +10,8 @@ import java.util.function.Supplier;
 
 /** Pacote servidor -> cliente que dispara os efeitos cinematograficos (particulas, tremor, flash...). */
 public class FxPacket {
-    public enum Type { METEOR_IMPACT, SUPERNOVA, BEAM, BLACKHOLE_BIRTH, BLACKHOLE_COLLAPSE }
+    public enum Type { METEOR_IMPACT, SUPERNOVA, BEAM, BLACKHOLE_BIRTH, BLACKHOLE_COLLAPSE,
+        TIMESTOP, BLINK, ORBITAL, CHAIN, SLASH, REBIRTH, TORNADO, PRESET, LINK }
 
     public final int type;
     public final double x, y, z, x2, y2, z2;
