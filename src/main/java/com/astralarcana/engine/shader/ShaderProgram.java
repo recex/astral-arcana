@@ -1,6 +1,6 @@
 package com.astralarcana.engine.shader;
 
-import com.mojang.blaze3d.shaders.Uniform;
+import com.mojang.blaze3d.shaders.AbstractUniform;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.renderer.ShaderInstance;
 import org.joml.Matrix4f;
@@ -12,15 +12,15 @@ import java.util.Map;
 public final class ShaderProgram {
     public final String name;
     public final ShaderInstance inst;
-    private final Map<String, Uniform> cache = new HashMap<>();
+    private final Map<String, AbstractUniform> cache = new HashMap<>();
 
     ShaderProgram(String name, ShaderInstance inst) {
         this.name = name;
         this.inst = inst;
     }
 
-    private Uniform u(String n) {
-        Uniform u = cache.get(n);
+    private AbstractUniform u(String n) {
+        AbstractUniform u = cache.get(n);
         if (u == null) {
             u = inst.safeGetUniform(n);
             cache.put(n, u);
